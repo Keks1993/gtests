@@ -89,14 +89,14 @@ TEST_F(StrictAutoBrakeTest, SpeedLimitIsSave) {
 
 TEST_F(StrictAutoBrakeTest, CollisionAlert) {
 	EXPECT_CALL(bus, publish(
-						Field(&BrakeCommand::time_to_collision_s,
-							DoubleEq(0L))
-					)
+				Field(&BrakeCommand::time_to_collision_s,
+				DoubleEq(0L))
+			)
 	).Times(1);
 	EXPECT_CALL(bus, publish(
-						Field(&BrakeCommand::time_to_collision_s,
-							DoubleEq(1L))
-					)
+				Field(&BrakeCommand::time_to_collision_s,
+				DoubleEq(1L))
+			)
 	).Times(1);
 	AutoBrake auto_brake{ bus };
 	auto_brake.set_collision_threshold_s(10L);
